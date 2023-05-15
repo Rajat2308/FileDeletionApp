@@ -145,3 +145,25 @@ public class FileDeletionApp extends JFrame {
         }, deletionDateTime);
         JOptionPane.showMessageDialog(this, "File deletion scheduled successfully.");
     }
+
+    private Date getSelectedDeletionDateTime() {
+        Date selectedDate = (Date) dateSpinner.getValue();
+        Date selectedTime = (Date) timeSpinner.getValue();
+
+        if (selectedDate == null
+
+                || selectedTime == null) {
+            return null;
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(selectedDate);
+
+        Calendar timeCalendar = Calendar.getInstance();
+        timeCalendar.setTime(selectedTime);
+
+        calendar.set(Calendar.HOUR_OF_DAY, timeCalendar.get(Calendar.HOUR_OF_DAY));
+        calendar.set(Calendar.MINUTE, timeCalendar.get(Calendar.MINUTE));
+        calendar.set(Calendar.SECOND, timeCalendar.get(Calendar.SECOND));
+
+        return calendar.getTime();
+    }
