@@ -16,60 +16,78 @@ public class FileDeletionApp extends JFrame {
 
     private Timer fileDeletionTimer;
 
-    public FileDeletionApp() {
+    public javaproject() {
         setTitle("File Deletion App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 400, 900, 600);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
         getContentPane().setBackground(Color.gray);
+        
+
+        ImageIcon backgroundImage = new ImageIcon("back.jpg");
+        JLabel backgroundLabel = new JLabel("",backgroundImage,JLabel.CENTER);
+        backgroundLabel.setBounds(0, 0, 900, 600);
+        add(backgroundLabel);
+
+
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new FlowLayout());
+        centerPanel.setBounds(480, 250, 600, 300);
+        centerPanel.setBackground(Color.WHITE);
 
         l1 = new JLabel("We are happy to save your Time");
         l1.setFont(new Font("Arial", Font.BOLD, 40));
-        l1.setSize(700, 50);
+        l1.setSize(700, 100);
         l1.setLocation(480, 50);
+        l1.setForeground(Color.WHITE);
 
         l2 = new JLabel("File Path: ");
         l2.setFont(new Font("Arial", Font.BOLD, 20));
         l2.setLocation(540, 300);
         l2.setSize(250, 20);
+        
 
         l3= new JLabel("  Deletion Date: ");
         l3.setFont(new Font("Arial", Font.BOLD, 20));
         l3.setLocation(510, 350);
         l3.setSize(250, 20);
+        
 
         l4=new JLabel("  Deletion Time: ");
         l4.setFont(new Font("Arial", Font.BOLD, 20));
         l4.setLocation(510, 400);
         l4.setSize(250, 20);
+        
 
 
 
         filePathField = new JTextField(20);
         filePathField.setFont(new Font("Arial", Font.BOLD, 20));
         filePathField.setLocation(680, 300);
-        filePathField.setSize(300, 20);
+        filePathField.setSize(300, 25);
 
         selectFileButton = new JButton("Select");
         selectFileButton.setFont(new Font("Arial", Font.BOLD, 20));
-        selectFileButton.setLocation(1010, 300);
-        selectFileButton.setSize(100, 20);
+        selectFileButton.setLocation(700, 480);
+        selectFileButton.setSize(100, 25);
+        selectFileButton.setBackground(Color.lightGray);
 
         dateSpinner = new JSpinner(new SpinnerDateModel());
         dateSpinner.setFont(new Font("Arial", Font.BOLD, 20));
         dateSpinner.setLocation(680, 350);
-        dateSpinner.setSize(300, 20);
+        dateSpinner.setSize(300, 25);
 
         timeSpinner = new JSpinner(new SpinnerDateModel());
-        timeSpinner.setFont(new Font("Arial", Font.BOLD,20));
+        timeSpinner.setFont(new Font("Arial", Font.BOLD,25));
         timeSpinner.setLocation(680, 400);
-        timeSpinner.setSize(300, 20);
+        timeSpinner.setSize(300, 25);
 
         deleteButton = new JButton("Delete");
-        deleteButton.setFont(new Font("Arial", Font.BOLD, 20));
-        deleteButton.setLocation(680, 500);
-        deleteButton.setSize(100, 20);
+        deleteButton.setFont(new Font("Arial", Font.BOLD, 25));
+        deleteButton.setLocation(830, 480);
+        deleteButton.setSize(120, 25);
+        deleteButton.setBackground(Color.lightGray);
 
         JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(dateSpinner, "MM/dd/yyyy");
         dateSpinner.setEditor(dateEditor);
@@ -90,15 +108,17 @@ public class FileDeletionApp extends JFrame {
                 scheduleFileDeletion();
             }
         });
-        add(l1);
-        add(l2);
-        add(l3);
-        add(l4);
-        add(filePathField);
-        add(selectFileButton);
-        add(dateSpinner);
-        add(timeSpinner);
-        add(deleteButton);
+        backgroundLabel.add(l1);
+        backgroundLabel.add(l2);
+        backgroundLabel.add(l3);
+        backgroundLabel.add(l4);
+        backgroundLabel.add(filePathField);
+        backgroundLabel.add(selectFileButton);
+        backgroundLabel.add(dateSpinner);
+        backgroundLabel.add(timeSpinner);
+        backgroundLabel.add(deleteButton);
+        setContentPane(backgroundLabel);
+        backgroundLabel.add(centerPanel);
         setVisible(true);
     }
 
@@ -211,7 +231,7 @@ public class FileDeletionApp extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new FileDeletionApp();
+                new javaproject();
             }
         });
     }
